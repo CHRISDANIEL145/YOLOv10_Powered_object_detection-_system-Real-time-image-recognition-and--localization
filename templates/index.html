@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOLOv10 Object Detection</title>
+</head>
+<body style="text-align: center; font-family: Arial, sans-serif;">
+    <h1>YOLOv10 Object Detection</h1>
+
+    <!-- File Upload Form -->
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    <!-- Predictions Display -->
+    <h2>Predictions:</h2>
+    <ul>
+        {% for prediction in predictions %}
+            <li>{{ prediction }}</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Output Image Display -->
+    <h2>Output Image:</h2>
+    {% if output_image %}
+        <img src="{{ url_for('static', filename=output_image) }}" alt="Output Image" width="500">
+    {% endif %}
+
+    <!-- Live Stream -->
+    <h2>Live Stream:</h2>
+    <div>
+        <img src="{{ url_for('video_feed') }}" width="640" height="480">
+    </div>
+</body>
+</html>
